@@ -27,8 +27,8 @@ aepLibrary {
 
 dependencies {
     implementation("com.adobe.marketing.mobile:core:$mavenCoreVersion")
-    testImplementation("org.robolectric:robolectric:4.7")
-    testImplementation("io.mockk:mockk:1.13.11")
+    implementation("androidx.compose.ui:ui-tooling:1.4.3")
+    implementation ("com.adobe.marketing.mobile:messaging:3.1.0")
 }
 
 
