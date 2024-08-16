@@ -1,12 +1,13 @@
 package com.adobe.marketing.mobile.aepcomposeui
 
+import android.util.Log
 import com.adobe.marketing.mobile.Messaging
 import com.adobe.marketing.mobile.messaging.Proposition
 import com.adobe.marketing.mobile.messaging.SchemaType
 import com.adobe.marketing.mobile.messaging.Surface
 
-object ComposeUi {
-    fun getCardsForSurface(surface: Surface, callBack:UiCallback) {
+object ContentCardUi {
+    fun getCardsForSurface(surface: Surface, callBack: UiCallback) {
 
  //       val surfaceItem = Surface("soni")
 
@@ -15,9 +16,12 @@ object ComposeUi {
         var propositions = mutableListOf<Proposition>()
         val surfaceList = mutableListOf<Surface>()
         surfaceList.add(surface)
-
+//mobileapp://com.adobe.marketing.mobile.notificationbuilder.testapp/soni
         Messaging.updatePropositionsForSurfaces(surfaceList)
         Messaging.getPropositionsForSurfaces(surfaceList) {
+            for (entry in it.entries) {
+                Log.d("TestPorposition","" + entry.key + " --> " + entry.value)
+            }
             println("getPropositionsForSurfaces callback contained ${it.entries.size} entry/entries for surface ${surface.uri}")
             for (entry in it.entries) { // it is mutable map where key is surface and value is list of propositions
                 for (proposition in entry.value) { // iterating through each proposition in the list

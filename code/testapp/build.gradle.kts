@@ -72,6 +72,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10")
 
     implementation(project(":notificationbuilder"))
+    implementation(project(":aepcomposeui"))
     implementation("com.adobe.marketing.mobile:core:3.0.0")
     implementation("com.adobe.marketing.mobile:campaignclassic:3.0.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -82,6 +83,8 @@ dependencies {
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.material3:material3")
+    implementation ("com.adobe.marketing.mobile:messaging:3.1.0")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
