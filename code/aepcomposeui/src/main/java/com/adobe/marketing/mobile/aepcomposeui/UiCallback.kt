@@ -5,5 +5,5 @@ import com.adobe.marketing.mobile.aepcomposeui.uimodel.BaseTemplateModel
 import com.adobe.marketing.mobile.aepcomposeui.uitemplate.ContentCardTemplate
 
 interface UiCallback {
-    fun onContentCardReceived(baseTemplateModel: BaseTemplateModel)
+    fun onContentCardReceived(templateModelsList: List<BaseTemplateModel>)
 }
