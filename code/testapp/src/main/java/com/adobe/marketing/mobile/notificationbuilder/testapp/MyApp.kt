@@ -31,7 +31,7 @@ class MyApp : Application() {
         MobileCore.setApplication(this)
         MobileCore.setLogLevel(LoggingMode.VERBOSE)
 
-        val extensions = listOf(CampaignClassic.EXTENSION,Messaging.EXTENSION, Identity.EXTENSION)
+        val extensions = listOf(CampaignClassic.EXTENSION,Messaging.EXTENSION, Identity.EXTENSION, Edge.EXTENSION)
         MobileCore.registerExtensions(extensions) {
             // Necessary property id which has the edge configuration id needed by aep sdk
             MobileCore.configureWithAppID(ENVIRONMENT_FILE_ID)

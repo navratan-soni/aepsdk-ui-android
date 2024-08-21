@@ -1,16 +1,16 @@
 package com.adobe.marketing.mobile.aepcomposeui.uitemplate
 
 import androidx.compose.runtime.Composable
-import com.adobe.marketing.mobile.aepcomposeui.uielement.AEPTextView
-import com.adobe.marketing.mobile.messaging.ContentCard
-import com.adobe.marketing.mobile.messaging.ContentCardSchemaData
+import com.adobe.marketing.mobile.aepcomposeui.uimodel.BaseTemplateModel
+import com.adobe.marketing.mobile.aepcomposeui.uimodel.SmallImageTemplateModel
 
 
-class SmallImageTemplate: ContentCardTemplate{
+class SmallImageTemplate {
     @Composable
-    override fun GetUi(contentCardSchemaData: ContentCardSchemaData) {
-        contentCardSchemaData.contentCard
-        AEPTextView()
+   fun GetUi(baseContentCardModel: BaseTemplateModel) {
+        val smallImageTemplateModel = baseContentCardModel as SmallImageTemplateModel
+       // TwoColumnLayout(smallImageTemplateModel)
     }
+
 
 }

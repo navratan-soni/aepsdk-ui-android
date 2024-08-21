@@ -2,6 +2,7 @@ package com.adobe.marketing.mobile.aepcomposeui
 
 import android.util.Log
 import com.adobe.marketing.mobile.Messaging
+import com.adobe.marketing.mobile.aepcomposeui.uimodel.SmallImageTemplateModel
 import com.adobe.marketing.mobile.messaging.Proposition
 import com.adobe.marketing.mobile.messaging.SchemaType
 import com.adobe.marketing.mobile.messaging.Surface
@@ -18,23 +19,24 @@ object ContentCardUi {
         surfaceList.add(surface)
 //mobileapp://com.adobe.marketing.mobile.notificationbuilder.testapp/soni
         Messaging.updatePropositionsForSurfaces(surfaceList)
-        Messaging.getPropositionsForSurfaces(surfaceList) {
-            for (entry in it.entries) {
-                Log.d("TestPorposition","" + entry.key + " --> " + entry.value)
-            }
-            println("getPropositionsForSurfaces callback contained ${it.entries.size} entry/entries for surface ${surface.uri}")
-            for (entry in it.entries) { // it is mutable map where key is surface and value is list of propositions
-                for (proposition in entry.value) { // iterating through each proposition in the list
-                    if (isContentCard(proposition)) {
-                        for (item in proposition.items) { // Each proposition has a list of PropositionItems
-                            val inboundContentSchemaData = item.contentCardSchemaData
-                            inboundContentSchemaData!!.contentCard
+        Messaging.getPropositionsForSurfaces(surfaceList) { map: Map<Surface, List<Proposition>> ->
+
+            println("getPropositionsForSurfaces callback contained ${map.entries.size} entry/entries for surface ${surface.uri}")
+            for (entryOfSurfaceAndPropositionsList in map.entries) { // it is mutable map where key is surface and value is list of propositions
+                for (propositionList in entryOfSurfaceAndPropositionsList.value) { // iterating through each proposition in the list
+                    if (isContentCard(propositionList)) {
+                        for (propositionItem in propositionList.items) { // Each proposition has a list of PropositionItems
+                            var baseTempalte = propositionItem.contentCardSchemaData?.let {
+                                SmallImageTemplateModel().getTemplateFromContentCardSchemaData(
+                                    it
+                                )
+                            }
+                            callBack.onContentCardReceived(baseTempalte!!)
                         }
                     }
                 }
             }
         }
-
     }
 
     private fun isContentCard(proposition: Proposition): Boolean {
