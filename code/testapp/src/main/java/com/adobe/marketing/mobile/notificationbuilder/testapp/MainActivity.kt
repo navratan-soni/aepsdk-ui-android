@@ -39,19 +39,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.adobe.marketing.mobile.aepcomposeui.ContentCardUi
-import com.adobe.marketing.mobile.aepcomposeui.UiCallback
+import com.adobe.marketing.mobile.aepcomposeui.AEPComposeUi
 import com.adobe.marketing.mobile.aepcomposeui.uimodel.BaseTemplateModel
 import com.adobe.marketing.mobile.aepcomposeui.uimodel.SmallImageTemplateModel
-import com.adobe.marketing.mobile.aepcomposeui.uitemplate.ContentCardTemplate
-import com.adobe.marketing.mobile.aepcomposeui.uitemplate.SmallImageTemplate
 import com.adobe.marketing.mobile.notificationbuilder.testapp.notificationBuilder.UINotificationBuilderActivity
 import com.adobe.marketing.mobile.notificationbuilder.testapp.ui.theme.AepsdkTheme
 import com.adobe.marketing.mobile.services.ServiceProvider
@@ -66,7 +61,11 @@ class MainActivity : ComponentActivity() {
         val surface = com.adobe.marketing.mobile.messaging.Surface("soni")
         setContent {
             AepsdkTheme {
-                var baseTemplateModelData by remember { mutableStateOf<BaseTemplateModel?>(null) }
+                var baseTemplateModelListData by remember {
+                    mutableStateOf<List<BaseTemplateModel>?>(
+                        null
+                    )
+                }
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -85,23 +84,30 @@ class MainActivity : ComponentActivity() {
                         )
                         Spacer(modifier = Modifier.height(40.dp))
                         Button(onClick = {
-                            startActivity(Intent(this@MainActivity, UINotificationBuilderActivity::class.java))
+                            startActivity(
+                                Intent(
+                                    this@MainActivity,
+                                    UINotificationBuilderActivity::class.java
+                                )
+                            )
                         }) {
                             Text("Notification Builder")
                         }
 
                         Button(onClick = {
-                            ContentCardUi.getCardsForSurface(surface, object : UiCallback {
-                                override fun onContentCardReceived(baseTemplateModel: BaseTemplateModel) {
-                                    baseTemplateModelData = baseTemplateModel
+                            AEPComposeUi.getCardsForSurface(surface) {
+                                it.onSuccess {
+                                    baseTemplateModelListData = it
                                 }
-                            })
+                            }
                         }) {
                             Text("Fetch content card")
                         }
 
-                        if (baseTemplateModelData != null) {
-                            TwoColumnLayout(baseTemplateModelData!! as SmallImageTemplateModel)
+                        if (baseTemplateModelListData != null) {
+                            for (baseTemplateModelData in baseTemplateModelListData!!) {
+                                TwoColumnLayout(baseTemplateModelData as SmallImageTemplateModel)
+                            }
                         }
                     }
 
@@ -118,7 +124,11 @@ class MainActivity : ComponentActivity() {
 
     private fun requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.POST_NOTIFICATIONS),
