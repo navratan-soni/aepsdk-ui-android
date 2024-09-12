@@ -1,8 +1,3 @@
-import androidx.compose.material.MaterialTheme
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-
 class Constants {
     companion object {
         const val LOG_TAG = "AEPComposeUi"
@@ -23,30 +18,16 @@ class Constants {
 
             class Text {
                 companion object {
-                   /* val TITLE_FONT = FontFamily.Serif
-                    val BODY_FONT = FontFamily.Serif
-                    val BUTTON_FONT = FontFamily.Serif
-
-                    val TITLE_COLOR = MaterialTheme.colors.primary
-
-                    val BODY_COLOR = Color.Secondary
-
-                    val BUTTON_COLOR = Color.Blue*/
+                    /* Define font-related constants here if needed */
                 }
             }
 
             class Image {
-                /*companion object {
-                    val ICON_COLOR = Color.Primary
-                    const val ICON_SIZE = 13
-                }*/
+                /* Define image-related constants here if needed */
             }
 
             class DismissButton {
-                /*companion object {
-                    val ALIGNMENT = Alignment.TopTrailing
-                    const val SIZE = 13
-                }*/
+                /* Define dismiss button-related constants here if needed */
             }
         }
 
@@ -91,6 +72,9 @@ class Constants {
             class Text {
                 companion object {
                     const val CONTENT = "content"
+                    const val CLR = "clr"
+                    const val ALIGN = "align"
+                    const val FONT = "font"
                 }
             }
 
@@ -99,6 +83,8 @@ class Constants {
                     const val INTERACTION_ID = "interactId"
                     const val TEXT = "text"
                     const val ACTION_URL = "actionUrl"
+                    const val BOR_WIDTH = "borWidth"
+                    const val BOR_COLOR = "borColor"
                 }
             }
 
@@ -109,6 +95,7 @@ class Constants {
                     const val BUNDLE = "bundle"
                     const val DARK_BUNDLE = "darkBundle"
                     const val ICON = "icon"
+                    const val ICON_SIZE = "iconSize"
                 }
             }
         }
