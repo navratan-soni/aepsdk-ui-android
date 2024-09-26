@@ -29,6 +29,12 @@ dependencies {
     implementation("com.adobe.marketing.mobile:core:$mavenCoreVersion")
     testImplementation("org.robolectric:robolectric:4.7")
     testImplementation("io.mockk:mockk:1.13.11")
+    api(project(":aepuitemplates"))
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
 }
 
 
