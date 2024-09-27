@@ -1,8 +1,6 @@
 package com.adobe.mobile.marketing.uiengine.aepui.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
@@ -16,16 +14,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.adobe.marketing.mobile.aepuitemplates.SmallImageTemplate
 import com.adobe.mobile.marketing.uiengine.aepui.AepUI
-import com.adobe.mobile.marketing.uiengine.aepui.LargeImageAepUi
 import com.adobe.mobile.marketing.uiengine.aepui.SmallImageAepUi
 import com.adobe.mobile.marketing.uiengine.contentprovider.AepUiContentProvider
 import com.adobe.mobile.marketing.uiengine.observers.AepUiEventObserver
-import com.adobe.mobile.marketing.uiengine.aepui.state.LargeImageUIState
 import com.adobe.mobile.marketing.uiengine.aepui.state.SmallImageUIState
 import com.adobe.mobile.marketing.uiengine.aepui.style.AepUiStyle
-import com.adobe.mobile.marketing.uitemplates.LargeImageTemplate
-import com.adobe.mobile.marketing.uitemplates.SmallImageTemplate
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -79,19 +74,6 @@ private fun asComposable(
     aepUiStyle: AepUiStyle
 ): @Composable () -> Unit {
     return when (aepUI) {
-        is LargeImageAepUi -> {
-            {
-                val state = aepUI.getState()
-                if (!state.dismissed) {
-                    LargeImageCard(
-                        ui = aepUI,
-                        style = aepUiStyle.largeImageAepUiStyle,
-                        observer = observer
-                    )
-                }
-            }
-        }
-
         is SmallImageAepUi -> {
             {
                 val state = aepUI.getState()
@@ -120,20 +102,13 @@ private class AepListViewModel(
     init {
         viewModelScope.launch {
             contentProvider.getContent().collect { templates ->
-
                 val uiList = templates.map { template ->
 
                     val aepUiState: AepUI<*, *> = when (template) {
-                        is LargeImageTemplate -> LargeImageAepUi(
-                            template,
-                            LargeImageUIState()
-                        )
-
                         is SmallImageTemplate -> SmallImageAepUi(
                             template,
-                            SmallImageUIState(title = template.title?.content)
+                            SmallImageUIState(title = template.title)
                         )
-
                         else -> throw IllegalArgumentException("Unknown template type")
                     }
 
