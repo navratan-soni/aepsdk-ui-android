@@ -107,7 +107,7 @@ private class AepListViewModel(
                     val aepUiState: AepUI<*, *> = when (template) {
                         is SmallImageTemplate -> SmallImageAepUi(
                             template,
-                            SmallImageUIState(title = template.title)
+                            SmallImageUIState(title = template.title?.content)
                         )
                         else -> throw IllegalArgumentException("Unknown template type")
                     }
