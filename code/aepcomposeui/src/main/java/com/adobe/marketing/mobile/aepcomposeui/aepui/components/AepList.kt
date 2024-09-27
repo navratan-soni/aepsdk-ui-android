@@ -1,4 +1,4 @@
-package com.adobe.mobile.marketing.uiengine.aepui.components
+package com.adobe.marketing.mobile.aepcomposeui.aepui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,12 +15,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.adobe.marketing.mobile.aepuitemplates.SmallImageTemplate
-import com.adobe.mobile.marketing.uiengine.aepui.AepUI
-import com.adobe.mobile.marketing.uiengine.aepui.SmallImageAepUi
-import com.adobe.mobile.marketing.uiengine.contentprovider.AepUiContentProvider
-import com.adobe.mobile.marketing.uiengine.observers.AepUiEventObserver
-import com.adobe.mobile.marketing.uiengine.aepui.state.SmallImageUIState
-import com.adobe.mobile.marketing.uiengine.aepui.style.AepUiStyle
+import com.adobe.marketing.mobile.aepcomposeui.aepui.AepUI
+import com.adobe.marketing.mobile.aepcomposeui.aepui.SmallImageAepUi
+import com.adobe.marketing.mobile.aepcomposeui.contentprovider.AepUiContentProvider
+import com.adobe.marketing.mobile.aepcomposeui.observers.AepUiEventObserver
+import com.adobe.marketing.mobile.aepcomposeui.aepui.state.SmallImageUIState
+import com.adobe.marketing.mobile.aepcomposeui.aepui.style.AepUiStyle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

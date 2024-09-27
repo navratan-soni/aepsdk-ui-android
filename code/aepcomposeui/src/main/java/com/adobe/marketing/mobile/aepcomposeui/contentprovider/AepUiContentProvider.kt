@@ -1,4 +1,4 @@
-package com.adobe.mobile.marketing.uiengine.contentprovider
+package com.adobe.marketing.mobile.aepcomposeui.contentprovider
 
 import com.adobe.marketing.mobile.aepuitemplates.AepUiTemplate
 import kotlinx.coroutines.flow.Flow

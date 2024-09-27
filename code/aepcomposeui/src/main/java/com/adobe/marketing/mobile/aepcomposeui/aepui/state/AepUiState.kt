@@ -1,4 +1,4 @@
-package com.adobe.mobile.marketing.uiengine.aepui.state
+package com.adobe.marketing.mobile.aepcomposeui.aepui.state
 
 sealed interface AepUiState
 

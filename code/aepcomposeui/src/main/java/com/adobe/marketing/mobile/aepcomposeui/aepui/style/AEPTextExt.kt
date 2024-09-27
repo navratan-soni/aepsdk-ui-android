@@ -1,4 +1,4 @@
-package com.adobe.mobile.marketing.uiengine.aepui.style
+package com.adobe.marketing.mobile.aepcomposeui.aepui.style
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle

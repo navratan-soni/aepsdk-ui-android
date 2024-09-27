@@ -1,4 +1,4 @@
-package com.adobe.mobile.marketing.uiengine.aepui.style
+package com.adobe.marketing.mobile.aepcomposeui.aepui.style
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable

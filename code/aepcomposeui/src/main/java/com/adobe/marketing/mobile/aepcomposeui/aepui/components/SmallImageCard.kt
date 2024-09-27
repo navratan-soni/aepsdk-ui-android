@@ -1,4 +1,4 @@
-package com.adobe.mobile.marketing.uiengine.aepui.components
+package com.adobe.marketing.mobile.aepcomposeui.aepui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,10 +19,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.adobe.mobile.marketing.uiengine.aepui.SmallImageAepUi
-import com.adobe.mobile.marketing.uiengine.aepui.style.SmallImageAepUiStyle
-import com.adobe.mobile.marketing.uiengine.interactions.UIEvent
-import com.adobe.mobile.marketing.uiengine.observers.AepUiEventObserver
+import com.adobe.marketing.mobile.aepcomposeui.aepui.SmallImageAepUi
+import com.adobe.marketing.mobile.aepcomposeui.aepui.style.SmallImageAepUiStyle
+import com.adobe.marketing.mobile.aepcomposeui.interactions.UIEvent
+import com.adobe.marketing.mobile.aepcomposeui.observers.AepUiEventObserver
 
 /**
  * Composable for rendering a Small Image Card

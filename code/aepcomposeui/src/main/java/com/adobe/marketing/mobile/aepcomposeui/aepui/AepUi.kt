@@ -1,11 +1,11 @@
-package com.adobe.mobile.marketing.uiengine.aepui
+package com.adobe.marketing.mobile.aepcomposeui.aepui
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import com.adobe.marketing.mobile.aepuitemplates.AepUiTemplate
 import com.adobe.marketing.mobile.aepuitemplates.SmallImageTemplate
-import com.adobe.mobile.marketing.uiengine.aepui.state.AepUiState
-import com.adobe.mobile.marketing.uiengine.aepui.state.SmallImageUIState
+import com.adobe.marketing.mobile.aepcomposeui.aepui.state.AepUiState
+import com.adobe.marketing.mobile.aepcomposeui.aepui.state.SmallImageUIState
 
 
 /**
